@@ -1,0 +1,40 @@
+//Autowoot By SmartLucas,Beta Test
+API.chatlog("SMG Woot Version Beta Test Is Now Running")
+
+API.on(API.DJ_ADVANCE, autowoot);
+function autowoot(obj){
+var voto =true;
+if(voto){
+     $("#woot").click();
+}
+}
+
+function desligar(){
+ API.off(API.CHAT_COMMAND, command);
+ API.off(API.DJ_ADVANCE, autowoot);
+}
+
+API.on(API.CHAT_COMMAND, command);
+function command(value)
+{
+     switch(value)
+     {
+
+     case"/woot on":
+     API.chatlog("AutoWoot Is Now Active");
+     var voto = true;
+     break;
+
+     case"/woot off":
+     API.chatlog("AutoWoot Is Now Off");
+     var voto = false;
+     break;
+
+     case"/off":
+     API.chatlog("SMG Woot Is Now Offline");
+     desligar();
+     break;
+
+
+  }
+}       
