@@ -1,9 +1,15 @@
-Auto-Woot-SMG
+Auto-Woot-SkyWay
 =============
-Use this auto woot in the skrillex m1l gr4u's room for the edit back ground
-Talk with me if you want to customize and don't know how 
+The New Script For Multiple Communitys
+======================================
+This is a new auto woot for plug.dj by SmartLucas
+------------------------------------------------- 
+The time has come, and we're working on a new script to make your experience easier and better in plug.dj 
+Thinking about it we are working on a completely new menu with multiple options like: a bot commands, custom sounds to mention, fullscreen, Woot, Add, Meh, Meh Show, and a selection of different colors for the staff (and after completely finalized for users). 
+Thinking about all this, we work to make everything right, without fail.
 
+CREDITS:
+-------
+- Origin His radiant script is an inspiration for us
 
-
-CREDITS
-Origin
+Copyright &copy; 2015 SmartLucas
