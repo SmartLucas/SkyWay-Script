@@ -8,8 +8,4 @@ The time has come, and we're working on a new script to make your experience eas
 Thinking about it we are working on a completely new menu with multiple options like: a bot commands, custom sounds to mention, fullscreen, Woot, Add, Meh, Meh Show, and a selection of different colors for the staff (and after completely finalized for users). 
 Thinking about all this, we work to make everything right, without fail.
 
-CREDITS:
--------
-- Origin His radiant script is an inspiration for us
-
-Copyright &copy; 2015 SmartLucas
+Copyright &copy; 2014 SmartLucas
