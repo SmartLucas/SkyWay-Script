@@ -112,7 +112,7 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
         f_votelggr: function (obj){
             if (radiantScript.mehShow) { 
                 if (obj.vote != 1){
-                    API.chatLog(obj.user.username + " meh'd this track", true);
+                    API.chatLog(obj.user.username + " Votou chato nesta música", true);
                 }
             }
         },
@@ -137,12 +137,12 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
 
         onuserJoin: function (obj){
             if (!radiantScript.userJoin) return;  
-            radiantScript.addChatLog(obj.username + " just joined the room!", 'aqua');
+            radiantScript.addChatLog(obj.username + " Acaba de entrar na sala!", 'aqua');
         },
 
         onuserLeave: function (obj){
             if (!radiantScript.userLeave) return;  
-            radiantScript.addChatLog(obj.username + " just left the room!", 'orange');
+            radiantScript.addChatLog(obj.username + " Acaba de sair da sala!", 'orange');
         },
 
         joinQueue: function(obj) {
@@ -304,7 +304,7 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
     radiantScript.addChatLog('Radiant Script Iniciado v' + radiantScript.version, 'aqua');
     radiantScript.addChatLog('NOVOS Atalhos de teclado!', 'orange');
     if (API.getUser().gRole > 0) {
-    	radiantScript.addChatLog('BA\'s have some special (and fast) keyboard shortcuts too!', 'orange');
+    	radiantScript.addChatLog('Embaixadores tem alguns (e rápidos) atalhos de teclado também!', 'orange');
     }
     API.chatLog('Plugcubed não incluido!',true);  
     radiantScript.init();  
@@ -372,7 +372,7 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
     <div><p id="rmCmd" class="rmLinks">LiteBot Commands</p></div>\
     <div><p id="rmBlacklist" class="rmLinks">Blacklists</p></div>\
     <div><p>&nbsp;</p></div>\
-    <div><p id="atalhosdeteclado" class="rmLinks">Atalhos de teclado!</p></div>\
+    <div><p id="keyshortcuts" class="rmLinks">Atalhos de teclado!</p></div>\
     </section>';
 
     var content3 = '<div id="playlist-export-button" class="button"><i class="icon icon-export-white"></i></div>';
@@ -419,7 +419,7 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
     		<br>T = Digitar no chat\
     		<br>ESC (or TAB) = Sair o chat", "aqua");
     	if (API.getUser().gRole > 0) { 
-    		radiantScript.addChatLog("<u>BA Shortcuts:</u>\
+    		radiantScript.addChatLog("<u>Atahos BA:</u>\
     		<br>Z = Banir usuário selecionado\
     		<br>X = Calar usuário selecionado\
     		<br>V = Remover usuário selecionado da lista", "aqua");
