@@ -1,8 +1,8 @@
-if (API.enabled && $("#skyscript-css").length <= 0) {
+if (API.enabled && $("#electroscript-css").length <= 0) {
 
-    var skyScript = {
+    var electroScript = {
 
-        version       : "Beta",
+        version       : "0.0.1",
         autoWoot      : false,
         cAutoWoot     : '',
         autoJoin      : false,
@@ -87,10 +87,10 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
             this.fullScreen = !this.fullScreen;     
             this.cfullScreen = this.fullScreen ? 'checked' : '';
             if (this.fullScreen) {
-                radiantScript.fullscreenTrigger();
+                electroScript.fullscreenTrigger();
             }
             if (!this.fullScreen) {
-                radiantScript.fullscreenTrigger();
+                electroScript.fullscreenTrigger();
             }
         },
 
@@ -101,7 +101,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
 
         updateQueueStatus: function() {            
             if(API.getWaitListPosition() == '0') {
-                radiantScript.addChatLog('Get ready ' + this.userInfo.username + ', you\'re about to play!', 'aqua');
+                electroScript.addChatLog('Get ready ' + this.userInfo.username + ', Você irá tocar em alguns minutos!', 'aqua');
                 $('#waitlist-button').addClass('blue-bg');          
             }
             else {                      
@@ -110,22 +110,22 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         },
 
         f_votelggr: function (obj){
-            if (radiantScript.mehShow) { 
+            if (electroScript.mehShow) { 
                 if (obj.vote != 1){
-                    API.chatLog(obj.user.username + " meh'd this track", true);
+                    API.chatLog(obj.user.username + " Votou chato nesta música", true);
                 }
             }
         },
 
         djAdvanced: function(obj) {
-            if (radiantScript.autoWoot) { setTimeout(function() { $('#woot').click(); }, 2000); }
-            radiantScript.updateQueueStatus();
-            radiantScript.hyperSpace();
+            if (electroScript.autoWoot) { setTimeout(function() { $('#woot').click(); }, 2000); }
+            electroScript.updateQueueStatus();
+            electroScript.hyperSpace();
         },
 
         queueUpdate: function(obj) {
-            if (radiantScript.autoJoin) { 
-                    !radiantScript.isInQueue() && radiantScript.joinQueue();
+            if (electroScript.autoJoin) { 
+                    !electroScript.isInQueue() && electroScript.joinQueue();
             }
         },
 
@@ -136,48 +136,48 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         },
 
         onuserJoin: function (obj){
-            if (!radiantScript.userJoin) return;  
-            radiantScript.addChatLog(obj.username + " just joined the room!", 'aqua');
+            if (!electroScript.userJoin) return;  
+            electroScript.addChatLog(obj.username + " Acaba de entrar na sala!", 'aqua');
         },
 
         onuserLeave: function (obj){
-            if (!radiantScript.userLeave) return;  
-            radiantScript.addChatLog(obj.username + " just left the room!", 'orange');
+            if (!electroScript.userLeave) return;  
+            electroScript.addChatLog(obj.username + " Acaba de sair da sala!", 'orange');
         },
 
         joinQueue: function(obj) {
-            if (radiantScript.autoJoin) { 
+            if (electroScript.autoJoin) { 
                     "is-wait" === $("#dj-button").attr("class") ? $("#dj-button").click() : API.getWaitList().length < 50 && API.djJoin();
             }
         },
 
         join: function(obj) {
-            if (radiantScript.autoJoin) { 
-                    radiantScript.joinQueue();
+            if (electroScript.autoJoin) { 
+                    electroScript.joinQueue();
             }
         },
 
         fullscreenTrigger: function() {
-            if (radiantScript.fullScreen) { 
-                radiantScript.fullscreen();
+            if (electroScript.fullScreen) { 
+                electroScript.fullscreen();
                 $('#vote').addClass('disabled1');
-                $('#radiantscriptBottom').addClass('disabled1');
+                $('#electroscriptBottom').addClass('disabled1');
                 $('#playback').addClass('fsenabled3');
                 $('#playback-controls').addClass('fsenabled4');
                 $('#playback .background').addClass('fsenabled5');
                 $('#playback .background img').addClass('fsenabled6');
                 $('#DisableFullScreen').removeClass('disabled1');
-                $('#radiantscriptRight').addClass('disabled1');
+                $('#electroscriptRight').addClass('disabled1');
             }
-            if (!radiantScript.fullScreen) {
+            if (!electroScript.fullScreen) {
                 $('#vote').removeClass('disabled1');
-                $('#radiantscriptBottom').removeClass('disabled1');
+                $('#electroscriptBottom').removeClass('disabled1');
                 $('#playback').removeClass('fsenabled3');
                 $('#playback-controls').removeClass('fsenabled4');
                 $('#playback .background').removeClass('fsenabled5');
                 $('#playback .background img').removeClass('fsenabled6');
                 $('#DisableFullScreen').addClass('disabled1');
-                $('#radiantscriptRight').removeClass('disabled1');
+                $('#electroscriptRight').removeClass('disabled1');
                 $('#vote').removeClass('disabled1'); 
                 $('#vote').removeClass('fsenabled'); 
                 $(window).trigger('resize');
@@ -185,7 +185,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         },
 
         fullscreen: function() {
-            if (radiantScript.fullScreen) { 
+            if (electroScript.fullScreen) { 
                 var a = document.getElementById("playback");
                 var b = document.getElementById("playback-container").style.height = document.getElementById("app").style.height;
                 var c = document.getElementById("playback-container").style.width = document.getElementById("app").style.width;
@@ -197,22 +197,22 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
                 d && (d.style.height = b, d.style.width = c, d.style.left = 0);
 
                 window.onresize = function(event) {
-                    radiantScript.fullscreen();
+                    electroScript.fullscreen();
                 }
                 window.dispatchEvent = function(event) {
-                    radiantScript.fullscreen();
+                    electroScript.fullscreen();
                 }
                 window.onclick = function(event) {
-                    radiantScript.fullscreen();
+                    electroScript.fullscreen();
                 }
 
                 $('#app').on('mouseover', function() {
-                    if (radiantScript.fullScreen) { $('#fullscreenDisable').removeClass('disabled1'); 
+                    if (electroScript.fullScreen) { $('#fullscreenDisable').removeClass('disabled1'); 
                     $('#vote').addClass('fsenabled'); 
                     $('#vote').removeClass('disabled1'); };
                 }); 
                 $('#app').on('mouseout', function() {  
-                    if (radiantScript.fullScreen) { $('#fullscreenDisable').addClass('disabled1'); 
+                    if (electroScript.fullScreen) { $('#fullscreenDisable').addClass('disabled1'); 
                     $('#vote').removeClass('fsenabled'); 
                     $('#vote').addClass('disabled1'); }
                 }); 
@@ -293,29 +293,29 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
             API.on(API.CHAT_COMMAND, customCommands);
             function customCommands(value) {
                 if (value == '/users') {
-                    radiantScript.addChatLog("Right now there are " + API.getUsers().length + " users in the room.", "aqua");
+                    electroScript.addChatLog("Right now there are " + API.getUsers().length + " users in the room.", "aqua");
                 }
             }
         },
 
     }           
 
-    console.log('Loaded Radiant Script v' + radiantScript.version);       
-    radiantScript.addChatLog('Running Electro Script v' + radiantScript.version, 'aqua');
-    radiantScript.addChatLog('Atalhos de teclado!', 'orange');
+    console.log('Loaded Electro Script v' + electroScript.version);       
+    electroScript.addChatLog('Electro script iniciado v' + electroScript.version, 'aqua');
+    electroScript.addChatLog('Atalhos de teclado!', 'orange');
     if (API.getUser().gRole > 0) {
-    	radiantScript.addChatLog('BA\'s have some special (and fast) keyboard shortcuts too!', 'orange');
+    	electroScript.addChatLog('BA\'s have some special (and fast) keyboard shortcuts too!', 'orange');
     }
     API.chatLog('Plugcubed não incluido!',true);  
-    radiantScript.init();  
+    electroScript.init();  
     var plugCubed;
-    var content1 = '<section id="radiantscript">\
+    var content1 = '<section id="electroscript">\
         <h3 id="rm_button" style="cursor:pointer;">Electro Script</h3>\
         <p class="version">bookmarklet for plug.dj</p>\
         <div id="rm_menu">\
         <div><p>Auto Woot?</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-autowoot" ' + radiantScript.cAutoWoot + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-autowoot" ' + electroScript.cAutoWoot + '>\
             <label class="onoffswitch-label" for="checkbox-autowoot">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
@@ -323,7 +323,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         </div></div>\
         <div><p>AutoJoin?</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-autojoin" ' + radiantScript.cAutoJoin + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-autojoin" ' + electroScript.cAutoJoin + '>\
             <label class="onoffswitch-label" for="checkbox-autojoin">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
@@ -331,7 +331,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         </div></div>\
         <div><p>Show Mehs?</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-showmehs" ' + radiantScript.cmehShow + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-showmehs" ' + electroScript.cmehShow + '>\
             <label class="onoffswitch-label" for="checkbox-showmehs">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
@@ -339,7 +339,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         </div></div>\
         <div><p>User Join</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-userJoin" ' + radiantScript.cuserJoin + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-userJoin" ' + electroScript.cuserJoin + '>\
             <label class="onoffswitch-label" for="checkbox-userJoin">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
@@ -347,7 +347,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         </div></div>\
         <div><p>User Leave</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-userLeave" ' + radiantScript.cuserLeave + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-userLeave" ' + electroScript.cuserLeave + '>\
             <label class="onoffswitch-label" for="checkbox-userLeave">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
@@ -355,24 +355,24 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
         </div></div>\
         <div><p>Fullscreen?</p>\
         <div class="onoffswitch">\
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-fullscreen" ' + radiantScript.cfullScreen + '>\
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="checkbox-fullscreen" ' + electroScript.cfullScreen + '>\
             <label class="onoffswitch-label" for="checkbox-fullscreen">\
                 <div class="onoffswitch-inner"></div>\
                 <div class="onoffswitch-switch"></div>\
             </label>\
         </div></div>\
         </div>\
-        <p class="version">version ' + radiantScript.version + '</p>\
+        <p class="version">version ' + electroScript.version + '</p>\
     </section>';
-    var content2 = '<section id="radiantscriptOther">\
+    var content2 = '<section id="electroscriptOther">\
     <div><p id="rmFacebook" class="rmLinks">Facebook</p></div>\
     <div><p id="rmTwitter" class="rmLinks">Twitter</p></div>\
     <div><p id="rmSite" class="rmLinks">Website</p></div>\
     <div><p id="rmRules" class="rmLinks">Our Rules</p></div>\
-    <div><p id="rmCmd" class="rmLinks">LiteBot Commands</p></div>\
+    <div><p id="rmCmd" class="rmLinks">EMGBot Commands</p></div>\
     <div><p id="rmBlacklist" class="rmLinks">Blacklists</p></div>\
     <div><p>&nbsp;</p></div>\
-    <div><p id="keyshortcuts" class="rmLinks">Key Shortcuts!</p></div>\
+    <div><p id="keyshortcuts" class="rmLinks">Atalhos de teclado!</p></div>\
     </section>';
 
     var content3 = '<div id="playlist-export-button" class="button"><i class="icon icon-export-white"></i></div>';
@@ -386,15 +386,15 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
     $('#room').append(content3);
     $('#room').append(content4);
 
-    radiantScript.fullscreen();
+    electroScript.fullscreen();
 
-    $('#checkbox-autowoot').on('click', function() { radiantScript.toggleAutoWoot();  });    
-    $('#checkbox-autojoin').on('click', function() { radiantScript.toggleAutoJoin();  }); 
-    $('#checkbox-pointwhore').on('click', function() { radiantScript.togglePointWhore();  });
-    $('#checkbox-fullscreen').on('click', function() { radiantScript.toggleFullScreen();  }); 
-    $('#checkbox-showmehs').on('click', function() { radiantScript.toggleMehShow();  }); 
-    $('#checkbox-userLeave').on('click', function() { radiantScript.toggleuserLeave();  }); 
-    $('#checkbox-userJoin').on('click', function() { radiantScript.toggleuserJoin();  }); 
+    $('#checkbox-autowoot').on('click', function() { electroScript.toggleAutoWoot();  });    
+    $('#checkbox-autojoin').on('click', function() { electroScript.toggleAutoJoin();  }); 
+    $('#checkbox-pointwhore').on('click', function() { electroScript.togglePointWhore();  });
+    $('#checkbox-fullscreen').on('click', function() { electroScript.toggleFullScreen();  }); 
+    $('#checkbox-showmehs').on('click', function() { electroScript.toggleMehShow();  }); 
+    $('#checkbox-userLeave').on('click', function() { electroScript.toggleuserLeave();  }); 
+    $('#checkbox-userJoin').on('click', function() { electroScript.toggleuserJoin();  }); 
 
     $('#rmFacebook').on('click', function() { window.open('https://facebook.com/skrillex1000gr4u');  });
     $('#rmTwitter').on('click', function() { window.open('https://twitter.com/radiantdj');  });
@@ -403,7 +403,7 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
     $('#rmBlacklist').on('click', function() { window.open('http://ltebt.com/s/all');  });
     $('#rmRules').on('click', function() { window.open('http://ltebt.com/s/rules');  });
     $('#keyshortcuts').on('click', function() { 
-    	radiantScript.addChatLog("<u>Atalhos de teclado:</u>\
+    	electroScript.addChatLog("<u>Atalhos de teclado:</u>\
     		<br>W = Legal\
             <br>M = Chato<br>G = Add música à atual Playlist \
     		<br>D = Painel\
@@ -558,9 +558,9 @@ if (API.enabled && $("#skyscript-css").length <= 0) {
     });
 }
 else {
-    $('#radiantscript').fadeIn();
-    console.log('Radiant Script v' + radiantScript.version + ' already loaded');
-    API.chatLog('Radiant Script v' + radiantScript.version + ' already loaded', true);    
+    $('#electroscript').fadeIn();
+    console.log('Electro Script v' + electroScript.version + ' already loaded');
+    API.chatLog('Electro Script v' + electroScript.version + ' already loaded', true);    
 }
 //Temp fix for mention sounds.
 var userName = API.getUser().username;
