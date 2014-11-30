@@ -2,7 +2,7 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
 
     var radiantScript = {
 
-        version       : "0.0.20",
+        version       : "0.0.25",
         autoWoot      : false,
         cAutoWoot     : '',
         autoJoin      : false,
@@ -299,20 +299,18 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
         },
 
     }           
-
-    console.log('Loaded Radiant Script v' + radiantScript.version);       
-    radiantScript.addChatLog('Radiant Script Iniciado v' + radiantScript.version, 'aqua');
-    radiantScript.addChatLog('NOVOS Atalhos de teclado!', 'orange');
+    console.log('Loaded SkyWay Script v' + radiantScript.version);       
+    radiantScript.addChatLog('SkyWay Script Iniciado v' + radiantScript.version, 'aqua');
+    radiantScript.addChatLog('Novos Atalhos de teclado!', 'orange');
     if (API.getUser().gRole > 0) {
-    	radiantScript.addChatLog('Embaixadores tem alguns (e rápidos) atalhos de teclado também!', 'orange');
     }
-    API.chatLog('Estamos refazendo este script!Você pode acompanhar o projeto através deste link https://github.com/SmartLucas',true);
+    API.chatLog('Bem-Vindo usuário e obrigado por usar nosso script!',true);
     API.chatLog('Plugcubed não incluido!',true);
     radiantScript.init();  
     var plugCubed;
     var content1 = '<section id="radiantscript">\
-        <h3 id="rm_button" style="cursor:pointer;">Radiant Script</h3>\
-        <p class="version">bookmarklet for plug.dj</p>\
+        <h3 id="rm_button" style="cursor:pointer;">SkyWay Script</h3>\
+        <p class="version">Script by DubNoise</p>\
         <div id="rm_menu">\
         <div><p>Auto Woot?</p>\
         <div class="onoffswitch">\
@@ -374,14 +372,15 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
     <div><p id="rmBlacklist" class="rmLinks">Blacklists</p></div>\
     <div><p>&nbsp;</p></div>\
     <div><p id="keyshortcuts" class="rmLinks">Atalhos de teclado!</p></div>\
+    <div><h3 id="github" class="rmLinks">GitHub Profile</h3></div>\
     </section>';
 
     var content3 = '<div id="playlist-export-button" class="button"><i class="icon icon-export-white"></i></div>';
 
-    var content4 = '<section id="DisableFullScreen" class="disabled1"><div id="fullscreenDisable">Disable Fullscreen</div></section>';
+    var content4 = '<section id="DisableFullScreen" class="disabled1"><div id="fullscreenDisable">Desligar Tela Cheia</div></section>';
 
 
-    $('body').prepend('<link rel="stylesheet" type="text/css" id="radiantscript-css" href="none" />');  
+    $('body').prepend('<link rel="stylesheet" type="text/css" id="radiantscript-css" href="https://code.radiant.dj/require/rs.css" />');  
     $('#room').append(content1);
     $('#room').append(content2);
     $('#room').append(content3);
@@ -403,128 +402,129 @@ if (API.enabled && $("#radiantscript-css").length <= 0) {
     $('#rmCmd').on('click', function() { window.open('http://ltebt.com/s/cmd');  });
     $('#rmBlacklist').on('click', function() { window.open('http://ltebt.com/s/all');  });
     $('#rmRules').on('click', function() { window.open('http://ltebt.com/s/rules');  });
+    $('#github').on('click', function() {window.open('https://github.com/SmartLucas'); });
     $('#keyshortcuts').on('click', function() { 
-    	radiantScript.addChatLog("<u>Atalhos de teclado:</u>\
-    		<br>W = Legal\
+            radiantScript.addChatLog("<u>Atalhos de teclado:</u>\
+            <br>W = Legal\
             <br>M = Chato<br>G = Add á atual playlist \
-    		<br>D = Painel\
+            <br>D = Painel\
             <br>C = Mostrar chat\
             <br>U = Lista de usuários\
-    		<br>F = Lista de amigos\
+            <br>F = Lista de amigos\
             <br>L = Mostrar lista de espera\
-    		<br>P = Abrir playlits\
-    		<br>H = Abrir histórico\
-    		<br>[SPACE] = Silenciar música\
-    		<br>+ = Volume alto +5\
-    		<br>- = Volume baixo -5\
-    		<br>T = Digitar no chat\
-    		<br>ESC (or TAB) = Sair o chat", "aqua");
-    	if (API.getUser().gRole > 0) { 
-    		radiantScript.addChatLog("<u>Atahos BA:</u>\
-    		<br>Z = Banir usuário selecionado\
-    		<br>X = Calar usuário selecionado\
-    		<br>V = Remover usuário selecionado da lista", "aqua");
-    	}
+            <br>P = Abrir playlits\
+            <br>H = Abrir histórico\
+            <br>[SPACE] = Silenciar música\
+            <br>+ = Volume alto +5\
+            <br>- = Volume baixo -5\
+            <br>T = Digitar no chat\
+            <br>ESC (or TAB) = Sair o chat", "aqua");
+        if (API.getUser().gRole > 0) { 
+            radiantScript.addChatLog("<u>Atahos BA:</u>\
+            <br>Z = Banir usuário selecionado\
+            <br>X = Calar usuário selecionado\
+            <br>V = Remover usuário selecionado da lista", "aqua");
+        }
     });
     
     $('#fullscreenDisable').on('click', function() { $('#checkbox-fullscreen').click(); });
     $('#fullscreenDisable').on('mouseover', function() { $('#fullscreenDisable').addClass('highlight'); }); 
     $('#fullscreenDisable').on('mouseout', function() { $('#fullscreenDisable').removeClass('highlight'); });  
     $("#rm_button").click(function(){
-    	$("#rm_menu").slideToggle();
-    	$("#radiantscriptOther").slideToggle();
-	});
-	$(document).keypress(function(esc) {
-		if ($(':focus').is('input') == true) {
-			switch (esc.which) {
-				case 27: // esc
-					$('#chat-input-field').blur();
-					break;
-			}
-	    }
-	});
-	$(document).keypress(function(key) {
-		if ($(':focus').is('input') == true)
-			return;
-		if ($('#room-info').css('display') == 'block')
-			return;
-		switch (key.which) {
-			case 32: // Spacebar
-				$('#volume > .button').click();
-				break;
-			case 103: // g
-				if ($('#grab.selected').length < 1) {
-					$('#grab').click();
-					$('.grab > .menu > ul > li > .icon-check-purple').parent().mousedown();
-				}
-				break;
-			case 119: // w
-				$('#woot').click();
-				break;
-			case 109: // m
-				$('#meh').click();
-				break;
-			case 112: // p
-				$('#playlist-button').click();
-				break;
-			case 100: // d
-				if($('#dashboard').css('display') === 'block') {
-					$('#footer-user > .back').click();
-				}
-				else $('.item.community.clickable').mousedown();
-				break;
-			case 117: // u
-				$('#users-button').click();
-				break;
-			case 108: // l
-				$('#waitlist-button').click();
-				break;
-			case 99: // c
-				$('#chat-button').click();
-				break;
-			case 102: // f
-				$('#friends-button').click();
-				break;
-			case 104: // h
-				$('#history-button').click();
-				break;
-			case 116: // t
-				$('#chat-input-field').focus();
-				break;
-			case 43: // +
-				API.setVolume(API.getVolume()+5);
-				break;
-			case 45: // +
-				API.setVolume(API.getVolume()-5);
-				break;
-		    //special functions
-			case 122: // z
-				if (API.getUser().gRole > 0) { 
-					if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
-					var data = API.getUser(API.selectedUserID);
-					API.chatLog("Banning User: "+data.username);
-					API.moderateBanUser(data.id, 1, API.BAN.DAY);
-				}
-				break;
-			case 120: // x
-				if (API.getUser().gRole > 0) { 
-					if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
-					var data = API.getUser(API.selectedUserID);
-					API.chatLog("Muting User: "+data.username);
-					API.moderateMuteUser(data.id, 3, API.MUTE.SHORT);
-				}
-				break;
-			case 118: // v
-				if (API.getUser().gRole > 0) { 
-					if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
-					var data = API.getUser(API.selectedUserID);
-					API.chatLog("Removing User: "+data.username+" from waitlist");
-					API.moderateRemoveDJ(data.id);
-				}
-				break;
-			default:
-		}
-	});
+        $("#rm_menu").slideToggle();
+        $("#radiantscriptOther").slideToggle();
+    });
+    $(document).keypress(function(esc) {
+        if ($(':focus').is('input') == true) {
+            switch (esc.which) {
+                case 27: // esc
+                    $('#chat-input-field').blur();
+                    break;
+            }
+        }
+    });
+    $(document).keypress(function(key) {
+        if ($(':focus').is('input') == true)
+            return;
+        if ($('#room-info').css('display') == 'block')
+            return;
+        switch (key.which) {
+            case 32: // Spacebar
+                $('#volume > .button').click();
+                break;
+            case 103: // g
+                if ($('#grab.selected').length < 1) {
+                    $('#grab').click();
+                    $('.grab > .menu > ul > li > .icon-check-purple').parent().mousedown();
+                }
+                break;
+            case 119: // w
+                $('#woot').click();
+                break;
+            case 109: // m
+                $('#meh').click();
+                break;
+            case 112: // p
+                $('#playlist-button').click();
+                break;
+            case 100: // d
+                if($('#dashboard').css('display') === 'block') {
+                    $('#footer-user > .back').click();
+                }
+                else $('.item.community.clickable').mousedown();
+                break;
+            case 117: // u
+                $('#users-button').click();
+                break;
+            case 108: // l
+                $('#waitlist-button').click();
+                break;
+            case 99: // c
+                $('#chat-button').click();
+                break;
+            case 102: // f
+                $('#friends-button').click();
+                break;
+            case 104: // h
+                $('#history-button').click();
+                break;
+            case 116: // t
+                $('#chat-input-field').focus();
+                break;
+            case 43: // +
+                API.setVolume(API.getVolume()+5);
+                break;
+            case 45: // +
+                API.setVolume(API.getVolume()-5);
+                break;
+            //special functions
+            case 122: // z
+                if (API.getUser().gRole > 0) { 
+                    if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
+                    var data = API.getUser(API.selectedUserID);
+                    API.chatLog("Banning User: "+data.username);
+                    API.moderateBanUser(data.id, 1, API.BAN.DAY);
+                }
+                break;
+            case 120: // x
+                if (API.getUser().gRole > 0) { 
+                    if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
+                    var data = API.getUser(API.selectedUserID);
+                    API.chatLog("Muting User: "+data.username);
+                    API.moderateMuteUser(data.id, 3, API.MUTE.SHORT);
+                }
+                break;
+            case 118: // v
+                if (API.getUser().gRole > 0) { 
+                    if (isNaN(API.selectedUserID)) return API.chatLog("Please select a user (Click on their username in chat or in userlist)");
+                    var data = API.getUser(API.selectedUserID);
+                    API.chatLog("Removing User: "+data.username+" from waitlist");
+                    API.moderateRemoveDJ(data.id);
+                }
+                break;
+            default:
+        }
+    });
     $(document).on('click', '#chat-messages .from, #user-lists .user', function(e){
         var name = $(this).text().replace(/^\s*|\s*$/g, ''),
             users = API.getUsers(),
